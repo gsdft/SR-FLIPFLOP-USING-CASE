@@ -34,15 +34,38 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+ 1. Connections are given as per circuit diagram.
+ 2. Logical inputs are given as per circuit diagram.
+ 3. Observe the output and verify the truth table.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+ Program for flipflops and verify its truth table in quartus using Verilog programming.
+ 
+// SR Flip-Flop (with async reset) 
+module sr_ff ( 
+    input  wire clk, rst, S, R, 
+    output reg  Q 
+); 
+    always @(posedge clk) begin 
+        if (rst) 
+            Q <= 1'b0;         // Reset 
+        else begin 
+            case ({S,R}) 
+                2'b00: Q <= Q;     // No change 
+                2'b01: Q <= 1'b0;  // Reset 
+                2'b10: Q <= 1'b1;  // Set 
+                2'b11: Q <= 1'bx;  // Invalid 
+            endcase 
+        end 
+    end 
+endmodule
 
 **RTL LOGIC FOR FLIPFLOPS**
+
+<img width="1883" height="842" alt="image" src="https://github.com/user-attachments/assets/42861feb-c94a-4a16-a897-728f85b3dcef" />
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
 **RESULTS**
+Design of S-R Flip flop using NAND & NOR gates was verified successfully.
