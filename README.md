@@ -44,9 +44,10 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
  
 // SR Flip-Flop (with async reset) 
 module sr_ff ( 
+
     input  wire clk, rst, S, R, 
-    output reg  Q 
-); 
+    output reg  Q ); 
+
     always @(posedge clk) begin 
         if (rst) 
             Q <= 1'b0;         // Reset 
@@ -59,7 +60,8 @@ module sr_ff (
             endcase 
         end 
     end 
-endmodule
+    endmodule
+
 
 **RTL LOGIC FOR FLIPFLOPS**
 
